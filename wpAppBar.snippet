@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>AppBar Generator</Title>
+      <Shortcut>wpappbar</Shortcut>
+      <Description>quick method builds an app bar from scratch in code</Description>
+      <Author>Matthias Shapiro</Author>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>buttonName</ID>
+          <ToolTip>variable for the button</ToolTip>
+          <Default>myButton1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>buttonText</ID>
+          <ToolTip>text for the button</ToolTip>
+          <Default>login</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>iconLocation</ID>
+          <ToolTip>icon for the button</ToolTip>
+          <Default>/Images/check.png</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>menuName</ID>
+          <ToolTip>variable for a menu item</ToolTip>
+          <Default>myMenuItem</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>menuText</ID>
+          <ToolTip>variable for a menu item</ToolTip>
+          <Default>settings</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>AppBarName</ID>
+          <ToolTip>name for your method</ToolTip>
+          <Default>CreateAppBar</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+private void $AppBarName$()
+{
+    // Basic Application Bar 
+    ApplicationBar = new ApplicationBar();
+    ApplicationBar.Mode = ApplicationBarMode.Default;
+    ApplicationBar.Opacity = 1.0;
+    ApplicationBar.IsVisible = true;
+    ApplicationBar.IsMenuEnabled = true;
+            
+    // Adding a button
+    ApplicationBarIconButton $buttonName$ = new ApplicationBarIconButton();
+    $buttonName$.IconUri = new Uri("$iconLocation$", UriKind.Relative);
+    $buttonName$.Text = "$buttonText$";
+    $buttonName$.Click += $buttonName$_Click;
+    ApplicationBar.Buttons.Add($buttonName$);
+
+    // Adding a menu item
+    ApplicationBarMenuItem $menuName$ = new ApplicationBarMenuItem();
+    $menuName$.Text = "$menuText$";
+    $menuName$.Click += $menuName$_Click;
+    ApplicationBar.MenuItems.Add($menuName$);
+}
+
+void $buttonName$_Click(object sender, EventArgs e)
+{
+    // Do something when the button is pressed
+}
+void $menuName$_Click(object sender, EventArgs e)
+{
+    // Do something when the menu item is pressed
+}
+$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
